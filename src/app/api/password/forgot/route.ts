@@ -22,7 +22,8 @@ export async function POST(req: Request) {
     data: { identifier: email, token, type: "RESET_PASSWORD", expires: new Date(Date.now() + 60 * 60 * 1000) },
   });
 
-  const url = `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/reset-password?token=${token}`;
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? new URL(req.url).origin;
+  const url = `${base}/reset-password?token=${token}`;
   const mail = await sendMail({
     to: email,
     subject: "Reset your password · Deutschwerk",

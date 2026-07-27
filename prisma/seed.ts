@@ -457,6 +457,13 @@ async function seedUsers() {
 }
 
 async function main() {
+  // Skip when the database is already populated (safe for automatic deploys).
+  const existingLevels = await prisma.level.count();
+  if (existingLevels > 0 && process.env.FORCE_SEED !== "1") {
+    console.log("✓ Database already seeded — skipping. (Set FORCE_SEED=1 to force a content re-seed.)");
+    return;
+  }
+
   console.log("🌱 Seeding Deutschwerk…\n");
   await seedLevels();
   await seedModules("A1", MODULES_A1);

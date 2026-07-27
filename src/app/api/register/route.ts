@@ -38,7 +38,8 @@ export async function POST(req: Request) {
     },
   });
 
-  const url = `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/api/verify?token=${token}`;
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? new URL(req.url).origin;
+  const url = `${base}/api/verify?token=${token}`;
   const mail = await sendMail({
     to: email,
     subject: "Verify your email · Deutschwerk",

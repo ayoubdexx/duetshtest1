@@ -43,7 +43,8 @@ export async function POST(req: Request) {
   await prisma.authToken.create({
     data: { identifier: email, token, type: "VERIFY_EMAIL", expires: new Date(Date.now() + 24 * 60 * 60 * 1000) },
   });
-  const url = `${process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"}/api/verify?token=${token}`;
+  const base = process.env.NEXT_PUBLIC_APP_URL ?? new URL(req.url).origin;
+  const url = `${base}/api/verify?token=${token}`;
   const mail = await sendMail({
     to: email,
     subject: "Verify your email · Deutschwerk",
