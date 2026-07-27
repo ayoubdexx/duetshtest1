@@ -1,0 +1,22 @@
+{
+  "name": "Deutschwerk — Learn German A1 to B2",
+  "short_name": "Deutschwerk",
+  "description": "The complete German learning platform: CEFR courses, grammar, vocabulary, flashcards and Goethe & TELC exam preparation.",
+  "start_url": "/dashboard",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#18181b",
+  "orientation": "portrait-primary",
+  "categories": ["education", "productivity"],
+  "lang": "en",
+  "icons": [
+    { "src": "/icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/icons/icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "/icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    { "name": "Daily Lesson", "url": "/daily", "description": "Start today's session" },
+    { "name": "Flashcard Review", "url": "/flashcards/review", "description": "Clear your review queue" },
+    { "name": "Dictionary", "url": "/dictionary", "description": "Look up a word" }
+  ]
+}
