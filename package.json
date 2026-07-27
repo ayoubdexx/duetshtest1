@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "vercel-build": "prisma db push && tsx prisma/seed.ts && next build",
+    "vercel-build": "DATABASE_URL=${MIGRATE_DATABASE_URL:-$DATABASE_URL} prisma db push && DATABASE_URL=${MIGRATE_DATABASE_URL:-$DATABASE_URL} tsx prisma/seed.ts && next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
